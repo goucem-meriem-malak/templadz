@@ -1,23 +1,21 @@
-# Templadz (v0.1)
-Offline-first template editor: design once, mark fields, fill by form or CSV batch, export PDF.
-Requires Node.js 20+ on Windows 10/11 (64-bit).
+<p align="center"><img src="src/assets/logo.svg" width="96" alt="Templadz logo"></p>
+<h1 align="center">Templadz</h1>
+<p align="center">Design a document once. Mark the variable parts. Generate hundreds of personalized copies, offline.</p>
 
-## First run
-    npm install
-    npm run keys                                   # ONE time: creates your license key pair
-    npm run issue -- "Customer name" 2027-12-31    # prints a license code
-    npm run dev                                    # paste the code in the activation screen
+## Features
+- **Word / Google Docs-style editor**: menu bar, formatting ribbon, tables, images, fonts, colors, lists, headers & footers, find & replace, zoom and view modes.
+- **Reusable templates**: mark names, dates or IDs as variable fields `{{ field }}` and save a master template.
+- **Fast fill**: one copy through a form, or many at once with quick-batch syntax such as `fname[ali; sara] bday[21/11/2001]`, or from a CSV file.
+- **Export** to PDF and DOCX, with a distinct file name for every copy. Print and share templates as `.tpz` files.
+- **Offline-first**: everything stays on your computer.
+- **Languages**: English, Français, العربية with full right-to-left support.
+- **Neutral gray design** with light and dark modes.
 
-Back up `tools/keys/private.pem` OFFLINE. Never ship it. Losing it means you cannot issue licenses.
-Each build must contain the matching `electron/license-public.pem` (created by `npm run keys`).
+## Stack
+Electron · React · TypeScript · Tiptap/ProseMirror · docx · Vite
 
-## Other commands
-    npm test        # unit tests (CSV, fields)
-    npm start       # run production bundle
-    npm run dist    # Windows installer in /release (unsigned: SmartScreen will warn)
+## Status
+Version 0.2 (early). Windows first. See [CHANGELOG](CHANGELOG.md), [documentation](docs/DOCUMENTATION.md) and the [security checklist](docs/SECURITY_CHECKLIST.md). To run or build it, follow [SETUP](SETUP.md).
 
-## White-label
-Edit `brand/brand.json` (name, accent colour) and `package.json > build` (appId, productName) per client.
-
-## Data
-Templates are JSON files in your user-data folder (%APPDATA%/templadz/templates). Share with the Share button (.tpz).
+## License
+MIT. See [LICENSE](LICENSE).

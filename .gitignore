@@ -1,4 +1,13 @@
 node_modules
 dist
+build/*.exe
 release
+.env
+.env.*
+*.pem
+*.key
+keys
 tools/keys
+.DS_Store
+SETUP.md
+build/

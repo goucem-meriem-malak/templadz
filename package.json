@@ -1,24 +1,35 @@
 {
   "name": "templadz",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Offline-first template and document editor",
-  "author": "Templadz",
+  "author": "CHANGE_ME",
+  "license": "MIT",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron . --dev\"",
     "start": "vite build && electron .",
     "dist": "vite build && electron-builder --win nsis",
-    "test": "vitest run",
-    "keys": "node tools/keygen.cjs init",
-    "issue": "node tools/keygen.cjs issue"
+    "test": "vitest run"
   },
   "dependencies": {
     "@tiptap/core": "^2.10.0",
+    "@tiptap/extension-color": "^2.10.0",
+    "@tiptap/extension-font-family": "^2.10.0",
+    "@tiptap/extension-highlight": "^2.10.0",
+    "@tiptap/extension-image": "^2.10.0",
+    "@tiptap/extension-table": "^2.10.0",
+    "@tiptap/extension-table-cell": "^2.10.0",
+    "@tiptap/extension-table-header": "^2.10.0",
+    "@tiptap/extension-table-row": "^2.10.0",
+    "@tiptap/extension-text-align": "^2.10.0",
+    "@tiptap/extension-text-style": "^2.10.0",
+    "@tiptap/extension-underline": "^2.10.0",
     "@tiptap/html": "^2.10.0",
     "@tiptap/pm": "^2.10.0",
     "@tiptap/react": "^2.10.0",
     "@tiptap/starter-kit": "^2.10.0",
+    "docx": "^9.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -35,9 +46,27 @@
     "wait-on": "^8.0.0"
   },
   "build": {
-    "appId": "com.templadz.app",
+    "appId": "com.example.templadz",
     "productName": "Templadz",
-    "files": ["dist/**", "electron/**", "package.json"],
-    "win": { "target": "nsis" }
+    "files": [
+      "dist/**",
+      "electron/**",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "fileAssociations": [
+      {
+        "ext": "tpz",
+        "name": "Templadz template",
+        "icon": "build/icon.ico"
+      }
+    ],
+    "directories": {
+      "output": "release"
+    }
   }
 }
